@@ -1,0 +1,29 @@
+@mixin font-size-large {
+  font-size: 1.125em;
+  line-height: 117%;
+}
+
+@mixin font-size-small {
+  font-size: 1em;
+  line-height: 119%;
+}
+
+@mixin font-size-smaller {
+  font-size: 0.875em;
+  line-height: 136%;
+}
+
+@mixin font-size-smallest {
+  font-size: 0.875em;
+  line-height: 114%;
+}
+
+@mixin font-medium {
+  font-family: 'Roboto-Medium', sans-serif;
+  font-weight: 500;
+}
+
+@mixin font-bold {
+  font-family: 'Roboto-Bold', sans-serif;
+  font-weight: 700;
+}

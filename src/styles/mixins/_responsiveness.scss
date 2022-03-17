@@ -1,0 +1,59 @@
+@import '../variables.scss';
+
+@mixin min-max-width($min, $max) {
+
+  @media only screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+
+  @include min-max-width(0px, $screen-size-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+
+  @include min-max-width($screen-size-mobile + 1px, $screen-size-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+
+  @media only screen and (min-width: $screen-size-tablet) {
+    @content;
+  }
+}
+
+
+@mixin up-to-tablet() {
+
+  @include min-max-width(0px, $screen-size-tablet) {
+    @content;
+  }
+}
+
+/**
+Fallback implementation of the newest flexbox-gap property.
+TODO: Switch to native flexbox-gap when https://caniuse.com/flexbox-gap
+ */
+
+@mixin flexbox-gap-x($x) {
+  & > *:not(:last-child) {
+    margin-right: $x;
+  }
+}
+
+/**
+Fallback implementation of the newest flexbox-gap property.
+TODO: Switch to native flexbox-gap when https://caniuse.com/flexbox-gap
+ */
+
+@mixin flexbox-gap-y($y) {
+  & > *:not(:last-child) {
+    margin-bottom: $y;
+  }
+}

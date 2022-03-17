@@ -1,0 +1,26 @@
+/**
+Global styles.
+ */
+
+@import '_normalize.scss';
+@import '_colors.scss';
+@import '_fonts.scss';
+@import 'variables.scss';
+
+#root {
+  --safe-inset-top: env(--safe-area-inset-top, 0px);
+  --safe-inset-right: env(--safe-area-inset-right, 0px);
+  --safe-inset-bottom: env(--safe-area-inset-bottom, 0px);
+  --safe-inset-left: env(--safe-area-inset-left, 0px);
+
+  --screen-size-mobile: #{$screen-size-mobile};
+  --screen-size-tablet: #{$screen-size-tablet};
+  --page-height: 100vh;
+
+  overflow: scroll;
+  min-height: var(--page-height);
+  max-height: var(--page-height);
+  font-family: 'Roboto-Regular', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}

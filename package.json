@@ -1,0 +1,50 @@
+{
+  "name": "react-assignment",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "mobx": "^6.3.2",
+    "mobx-react": "^7.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.40",
+    "@types/react-dom": "^17.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "node-sass": "6",
+    "prettier": "^2.5.1",
+    "react-scripts": "4.0.3",
+    "stylelint": "13",
+    "stylelint-config-css-modules": "2.2",
+    "stylelint-config-idiomatic-css": "1.1",
+    "stylelint-config-prettier": "8.0",
+    "stylelint-config-recommended": "5.0",
+    "stylelint-config-recommended-scss": "4.2",
+    "stylelint-order": "4.1",
+    "stylelint-scss": "3.19",
+    "typescript": "^4.6.2"
+  },
+  "scripts": {
+    "start": "cross-env REACT_APP_API_BASE=http://localhost ESLINT_NO_DEV_ERRORS=true react-scripts start",
+    "build": "cross-env REACT_APP_API_BASE=http://localhost react-scripts build",
+    "lint": "concurrently yarn:lint.code yarn:lint.style",
+    "lint.fix": "concurrently yarn:lint.code.fix yarn:lint.style.fix",
+    "lint.code": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint.code.fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "lint.style": "stylelint \"src/**/*.scss\"",
+    "lint.style.fix": "stylelint \"src/**/*.scss\" --fix",
+    "tsc": "./node_modules/.bin/tsc --noEmit --project tsconfig.json"
+  }
+}
