@@ -7,7 +7,8 @@
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.40",
@@ -37,8 +38,8 @@
     "typescript": "^4.6.2"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_API_BASE=http://localhost ESLINT_NO_DEV_ERRORS=true react-scripts start",
-    "build": "cross-env REACT_APP_API_BASE=http://localhost react-scripts build",
+    "start": "cross-env REACT_APP_API_BASE=https://api.supermetrics.com ESLINT_NO_DEV_ERRORS=true react-scripts start",
+    "build": "cross-env REACT_APP_API_BASE=https://api.supermetrics.com react-scripts build",
     "lint": "concurrently yarn:lint.code yarn:lint.style",
     "lint.fix": "concurrently yarn:lint.code.fix yarn:lint.style.fix",
     "lint.code": "eslint \"src/**/*.{ts,tsx}\"",
