@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@fontsource/roboto": "^4.5.3",
     "clsx": "^1.1.1",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",

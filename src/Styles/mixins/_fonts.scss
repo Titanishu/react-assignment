@@ -17,13 +17,3 @@
   font-size: 0.875em;
   line-height: 114%;
 }
-
-@mixin font-medium {
-  font-family: 'Roboto-Medium', sans-serif;
-  font-weight: 500;
-}
-
-@mixin font-bold {
-  font-family: 'Roboto-Bold', sans-serif;
-  font-weight: 700;
-}
