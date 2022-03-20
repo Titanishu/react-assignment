@@ -1,5 +1,7 @@
-import { AuthService } from './Api/models'
+import { AuthApiService } from './Api/models'
+import { AuthStorageService } from './Storage/models'
 
 export interface AuthStoreOptions {
-  api: AuthService
+  api: AuthApiService
+  storage: AuthStorageService
 }

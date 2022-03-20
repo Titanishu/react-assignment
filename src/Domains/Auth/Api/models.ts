@@ -12,6 +12,6 @@ export interface RegisterResponse {
   email: string
 }
 
-export interface AuthService {
+export interface AuthApiService {
   register: ApiRequest<RegisterParams, RegisterResponse>
 }

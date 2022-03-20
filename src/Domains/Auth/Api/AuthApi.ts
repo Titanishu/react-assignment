@@ -1,8 +1,8 @@
 import { API_BASE } from '../../../Core/Consts/env'
 import { AssignmentApi } from '../../Assignment/Common/Api/AssignmentApi'
-import { AuthService, RegisterParams, RegisterResponse } from './models'
+import { AuthApiService, RegisterParams, RegisterResponse } from './models'
 
-export class AuthApi extends AssignmentApi implements AuthService {
+export class AuthApi extends AssignmentApi implements AuthApiService {
   constructor() {
     super({ baseURL: `${API_BASE}/assignment` })
   }

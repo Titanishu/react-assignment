@@ -1,7 +1,25 @@
-import React, { FC } from 'react'
+import { observer } from 'mobx-react'
+import React, { FC, useEffect } from 'react'
 
-import { RootStoreProvider } from './Core/RootStore/RootStoreProvider'
+import { AppRouter } from './Core/AppRouter/AppRouter'
+import { useRootStore } from './Core/RootStore/RootStoreContext'
 
-export const App: FC = () => {
-  return <RootStoreProvider>App</RootStoreProvider>
+const AppComponent: FC = () => {
+  const store = useRootStore()
+  const loading = store.loading
+
+  /**
+   * Load store.
+   */
+  useEffect(() => {
+    store.load()
+  }, [store])
+
+  if (loading) {
+    return <div>TODO: App loader</div>
+  }
+
+  return <AppRouter />
 }
+
+export const App = observer(AppComponent)
