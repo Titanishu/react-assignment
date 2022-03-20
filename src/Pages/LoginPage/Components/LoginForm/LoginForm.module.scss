@@ -1,0 +1,22 @@
+@import '../../../../Styles/mixins.scss';
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid var(--color-border-1);
+
+  @include flexbox-gap-y(20px);
+
+  .LoginForm__Title {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .LoginForm__SubmitButton {
+    align-self: flex-end;
+  }
+}

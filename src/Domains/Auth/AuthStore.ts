@@ -5,8 +5,8 @@ import { AuthStoreOptions } from './models'
 
 export class AuthStore {
   protected _authToken: string | undefined
-  protected _email: string | undefined
-  protected _name: string | undefined
+  protected _email: string
+  protected _name: string
 
   protected _options: AuthStoreOptions
 
@@ -14,8 +14,8 @@ export class AuthStore {
     this._options = options
 
     this._authToken = undefined
-    this._email = undefined
-    this._name = undefined
+    this._email = ''
+    this._name = ''
 
     makeAutoObservable(this as this & { _options: ConstructorParameters<typeof AuthStore>[0] }, { _options: false })
   }
@@ -28,6 +28,15 @@ export class AuthStore {
   }
 
   /**
+   * Set auth token.
+   *
+   * @param value New value.
+   */
+  public setToken(value: string): void {
+    this._authToken = value
+  }
+
+  /**
    * Is user authenticated or not.
    */
   public get authenticated(): boolean {
@@ -37,15 +46,33 @@ export class AuthStore {
   /**
    * Authentication name.
    */
-  public get name(): string | undefined {
+  public get name(): string {
     return this._name
+  }
+
+  /**
+   * Set name.
+   *
+   * @param value New value.
+   */
+  public setName(value: string): void {
+    this._name = value
   }
 
   /**
    * Authentication email.
    */
-  public get email(): string | undefined {
+  public get email(): string {
     return this._email
+  }
+
+  /**
+   * Set email.
+   *
+   * @param value New value.
+   */
+  public setEmail(value: string): void {
+    this._email = value
   }
 
   /**
@@ -88,7 +115,7 @@ export class AuthStore {
    */
   public load() {
     this._authToken = this._options.storage.getToken() || undefined
-    this._name = this._options.storage.getName() || undefined
-    this._email = this._options.storage.getEmail() || undefined
+    this._name = this._options.storage.getName() || ''
+    this._email = this._options.storage.getEmail() || ''
   }
 }

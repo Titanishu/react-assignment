@@ -5,5 +5,8 @@ export const ROUTES = {
   },
   POSTS: {
     PATH: '/posts/*',
+    POST: {
+      PATH: (post: number) => `/posts/${post}`,
+    },
   },
 }

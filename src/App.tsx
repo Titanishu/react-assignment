@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react'
 import React, { FC, useEffect } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
 import { AppRouter } from './Core/AppRouter/AppRouter'
 import { useRootStore } from './Core/RootStore/RootStoreContext'
@@ -19,7 +20,11 @@ const AppComponent: FC = () => {
     return <div>TODO: App loader</div>
   }
 
-  return <AppRouter />
+  return (
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  )
 }
 
 export const App = observer(AppComponent)

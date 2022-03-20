@@ -33,6 +33,10 @@ export abstract class BaseApi {
   }
 
   protected handleSuccess<T>(response: Response, _input: RequestInfo, _init?: RequestInit): Promise<T> {
+    if (response.status >= 400) {
+      throw response
+    }
+
     return response.json() as Promise<T>
   }
   protected handleError(error: unknown, _input: RequestInfo, _init?: RequestInit): never {
