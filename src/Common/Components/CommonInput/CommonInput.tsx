@@ -12,6 +12,9 @@ interface Props {
   className?: string
 }
 
+/**
+ * Common text input.
+ */
 export const CommonInput: FC<Props> = (props) => {
   const { value, onChange, title, placeholder, disabled, className } = props
 

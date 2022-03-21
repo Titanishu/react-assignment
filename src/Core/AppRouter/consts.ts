@@ -1,3 +1,6 @@
+/**
+ * App routes map.
+ */
 export const ROUTES = {
   PATH: '/',
   LOGIN: {

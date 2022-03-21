@@ -1,3 +1,6 @@
+/**
+ * Auth storage service.
+ */
 export interface AuthStorageService {
   getToken: () => string | undefined
   setToken: (value: string) => void

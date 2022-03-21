@@ -7,6 +7,10 @@ import { AuthStorage } from '../../Domains/Auth/Storage/AuthStorage'
 import { PostsApi } from '../../Domains/Posts/Api/PostsApi'
 import { PostsStore } from '../../Domains/Posts/PostsStore'
 
+/**
+ * Root store.
+ * See this pattern here https://mobx.js.org/defining-data-stores.html#combining-multiple-stores
+ */
 export class RootStore {
   public readonly auth: AuthStore
   public readonly posts: PostsStore

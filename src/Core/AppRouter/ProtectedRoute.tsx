@@ -7,6 +7,10 @@ interface Props {
   children: ReactNode
 }
 
+/**
+ * Protected route.
+ * Redirect to @redirect if valid is falsy.
+ */
 export const ProtectedRoute: FC<Props> = (props) => {
   const { valid, redirect, children } = props
   const from = useLocation()

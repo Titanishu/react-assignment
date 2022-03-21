@@ -2,9 +2,12 @@ import { BaseStorage } from '../../../Core/Storage/BaseStorage'
 import { AuthStorageKeys } from './enums'
 import { AuthStorageService } from './models'
 
+/**
+ * Auth Storage.
+ */
 export class AuthStorage extends BaseStorage implements AuthStorageService {
   constructor() {
-    super('auth')
+    super('auth_')
   }
 
   getToken = () => this.getItem(AuthStorageKeys.TOKEN)

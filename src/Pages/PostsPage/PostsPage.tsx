@@ -19,6 +19,9 @@ const PostsPageComponent: FC = (_props) => {
 
   const user_id = query.get(ROUTES.POSTS.QUERY_PARAMS.user_id)
 
+  /**
+   * If we have "user_id" query param then set it.
+   */
   useEffect(() => {
     if (user_id) {
       void controller.handleSelectUserId(user_id)
@@ -28,6 +31,9 @@ const PostsPageComponent: FC = (_props) => {
   const showLoading = controller.loading
   const error = controller.getPostsError
 
+  /**
+   * Request posts when page loaded.
+   */
   useEffect(() => {
     void controller.getPosts(Number(page) || 1)
   }, [controller, page])

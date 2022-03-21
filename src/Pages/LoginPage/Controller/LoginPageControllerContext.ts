@@ -10,4 +10,7 @@ export const LoginPageControllerContext = createContext<LoginPageController>(
   undefined as unknown as LoginPageController,
 )
 
+/**
+ * Use login page controller.
+ */
 export const useLoginPageController = () => useContext(LoginPageControllerContext)

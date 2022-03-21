@@ -3,11 +3,18 @@ import { makeAutoObservable } from 'mobx'
 import { RegisterParams, RegisterResponse } from './Api/models'
 import { AuthStoreOptions } from './models'
 
+/**
+ * Auth store.
+ */
 export class AuthStore {
+  /** Auth token **/
   protected _authToken: string | undefined
+  /** Email **/
   protected _email: string
+  /** Name **/
   protected _name: string
 
+  /** Store options **/
   protected _options: AuthStoreOptions
 
   constructor(options: AuthStoreOptions) {

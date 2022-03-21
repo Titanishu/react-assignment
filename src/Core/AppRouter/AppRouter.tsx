@@ -9,12 +9,18 @@ import { useRootStore } from '../RootStore/RootStoreContext'
 import { ROUTES } from './consts'
 import { ProtectedRoute } from './ProtectedRoute'
 
+/**
+ * Root app router.
+ */
 const AppRouterComponent: FC = (_props) => {
   const root = useRootStore()
   const navigate = useNavigate()
 
   const authenticated = root.auth.authenticated
 
+  /**
+   * Set navigate instance to store.
+   */
   useEffect(() => {
     root.setNavigate(navigate)
   }, [navigate, root])

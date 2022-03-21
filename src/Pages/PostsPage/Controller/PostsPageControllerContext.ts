@@ -10,4 +10,7 @@ export const PostsPageControllerContext = createContext<PostsPageController>(
   undefined as unknown as PostsPageController,
 )
 
+/**
+ * Use posts page controller.
+ */
 export const usePostsPageController = () => useContext(PostsPageControllerContext)

@@ -1,5 +1,11 @@
 import { SortDirections } from '../../Domains/Assignment/Common/Api/enums'
 
+/**
+ * Get comparator sort function for strings.
+ *
+ * @param getValue Getter to comparable value.
+ * @param direction Sort direction.
+ */
 export const getStringsComparator = <T>(getValue: (value: T) => string, direction: SortDirections) => {
   if (direction === SortDirections.ASC) {
     return (a: T, b: T) => getValue(a).localeCompare(getValue(b), 'en', { sensitivity: 'base' })
@@ -8,6 +14,12 @@ export const getStringsComparator = <T>(getValue: (value: T) => string, directio
   }
 }
 
+/**
+ * Get comparator sort function for numbers.
+ *
+ * @param getValue Getter to comparable value.
+ * @param direction Sort direction.
+ */
 export const getNumbersComparator = <T>(getValue: (value: T) => number, direction: SortDirections) => {
   if (direction === SortDirections.ASC) {
     return (a: T, b: T) => getValue(a) - getValue(b)

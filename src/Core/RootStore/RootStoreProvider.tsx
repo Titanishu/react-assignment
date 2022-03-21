@@ -7,6 +7,9 @@ interface Props {
   children: ReactNode
 }
 
+/**
+ * Root store provider.
+ */
 export const RootStoreProvider: FC<Props> = (props) => {
   const { children } = props
 

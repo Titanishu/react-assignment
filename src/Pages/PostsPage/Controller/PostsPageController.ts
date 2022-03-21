@@ -9,14 +9,24 @@ import { AsyncParticle, getAsyncParticle, isLoading } from '../../../Libs/doRequ
 import { mobxRequest } from '../../../Libs/mobxRequest'
 import { User } from './models'
 
+/**
+ * Posts page controller.
+ */
 export class PostsPageController {
+  /** Root store instance **/
   private readonly _root: RootStore
 
+  /** getPosts particle **/
   private _getPosts: AsyncParticle<GetPostsResponse, GetPostsParams>
+
+  /** Posts sort direction. **/
   private _postsSort: SortDirections
 
+  /** Users search value **/
   private _usersSearch: string
+  /** Posts search value **/
   private _postsSearch: string
+  /** Selected user id **/
   private _selectedUserId: string | undefined
 
   constructor(root: RootStore) {
@@ -33,6 +43,9 @@ export class PostsPageController {
     makeAutoObservable(this as this & { _root: ConstructorParameters<typeof PostsPageController>[0] }, { _root: false })
   }
 
+  /**
+   * Users list.
+   */
   public get users(): User[] {
     const users = [...this.filteredUsersList]
     const sortFn = getStringsComparator<User>((user) => user.name, SortDirections.ASC)
@@ -40,6 +53,9 @@ export class PostsPageController {
     return users.sort(sortFn)
   }
 
+  /**
+   * Posts list.
+   */
   public get posts(): Post[] {
     const sort = this._postsSort
     const posts = [...this.filteredPostsList]
@@ -48,26 +64,37 @@ export class PostsPageController {
     return posts.sort(sortFn)
   }
 
+  /**
+   * Users search value.
+   */
   public get usersSearch(): string {
     return this._usersSearch
   }
 
+  /**
+   * Posts search value.
+   */
   public get postsSearch(): string {
     return this._postsSearch
   }
 
+  /**
+   * Selected user id.
+   */
   public get selectedUserId(): string | undefined {
     return this._selectedUserId
   }
 
-  public get postsSort(): SortDirections {
-    return this._postsSort
-  }
-
+  /**
+   * Flag: posts are loading.
+   */
   public get loading(): boolean {
     return isLoading(this._getPosts)
   }
 
+  /**
+   * Posts loading error text.
+   */
   public get getPostsError(): string | undefined {
     const error = this._getPosts.error
 
@@ -86,26 +113,56 @@ export class PostsPageController {
     return 'Get posts error'
   }
 
+  /**
+   * Users search change handler.
+   *
+   * @param value New value.
+   */
   public handleUsersSearchChange(value: string) {
     this._usersSearch = value
   }
 
+  /**
+   * Posts search change handler.
+   *
+   * @param value New value.
+   */
   public handlePostsSearchChange(value: string) {
     this._postsSearch = value
   }
 
+  /**
+   * Select user id handler.
+   *
+   * @param id New user id.
+   */
   public handleSelectUserId(id: string) {
     this._selectedUserId = id
   }
 
+  /**
+   * User click handler.
+   *
+   * @param user User.
+   */
   public handleUserClick(user: User) {
     this._selectedUserId = user.id
   }
 
+  /**
+   * Posts sort click handler.
+   *
+   * @param sort Sort direction.
+   */
   public handlePostsSortClick(sort: SortDirections) {
     this._postsSort = sort
   }
 
+  /**
+   * Get posts.
+   *
+   * @param page Page number.
+   */
   public async getPosts(page = 1): Promise<void> {
     const params = { page }
     const request = () => this._root.posts.requestPosts(page)
@@ -117,6 +174,9 @@ export class PostsPageController {
     }
   }
 
+  /**
+   * Filtered posts.
+   */
   private get filteredPostsList(): Post[] {
     if (!this._postsSearch) {
       return this.selectedUserPostsList
@@ -125,6 +185,9 @@ export class PostsPageController {
     return this.selectedUserPostsList.filter((post) => post.message.includes(this._postsSearch))
   }
 
+  /**
+   * Selected users posts.
+   */
   private get selectedUserPostsList(): Post[] {
     if (!this._selectedUserId) {
       return []
@@ -133,10 +196,16 @@ export class PostsPageController {
     return this.postsList.filter((post) => post.from_id === this._selectedUserId)
   }
 
+  /**
+   * Raw posts list.
+   */
   private get postsList(): Post[] {
     return this._getPosts.data?.posts || []
   }
 
+  /**
+   * Filtered users list.
+   */
   private get filteredUsersList(): User[] {
     if (!this._usersSearch) {
       return this.usersList
@@ -147,6 +216,9 @@ export class PostsPageController {
     return this.usersList.filter((user) => searchRegex.exec(user.name))
   }
 
+  /**
+   * Raw users list.
+   */
   private get usersList(): User[] {
     const map: Record<string, User> = {}
     const posts = this.postsList

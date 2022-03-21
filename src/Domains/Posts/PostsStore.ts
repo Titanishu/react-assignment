@@ -3,7 +3,11 @@ import { makeAutoObservable } from 'mobx'
 import { GetPostsParams, GetPostsResponse } from './Api/models'
 import { PostsStoreOptions } from './models'
 
+/**
+ * Posts store.
+ */
 export class PostsStore {
+  /** Store options **/
   private _options: PostsStoreOptions
 
   constructor(options: PostsStoreOptions) {

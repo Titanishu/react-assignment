@@ -7,9 +7,15 @@ import { RegisterParams, RegisterResponse } from '../../../Domains/Auth/Api/mode
 import { AsyncParticle, getAsyncParticle, isLoading } from '../../../Libs/doRequest'
 import { mobxRequest } from '../../../Libs/mobxRequest'
 
+/**
+ * Login page controller.
+ * New instance for every PageComponent.
+ */
 export class LoginPageController {
+  /** Root store instance **/
   private readonly _root: RootStore
 
+  /** Register request particle. **/
   private _register: AsyncParticle<RegisterResponse, RegisterParams>
 
   constructor(root: RootStore) {
@@ -20,10 +26,9 @@ export class LoginPageController {
     makeAutoObservable(this as this & { _root: ConstructorParameters<typeof LoginPageController>[0] }, { _root: false })
   }
 
-  public get loading(): boolean {
-    return isLoading(this._register)
-  }
-
+  /**
+   * Flag: you cannot submit form.
+   */
   public get submitDisabled(): boolean {
     if (isLoading(this._register)) {
       return true
@@ -42,6 +47,9 @@ export class LoginPageController {
     return false
   }
 
+  /**
+   * Register error text.
+   */
   public get registerError(): string | undefined {
     const error = this._register.error
 
@@ -60,14 +68,27 @@ export class LoginPageController {
     return 'Register error'
   }
 
+  /**
+   * Email change handler.
+   *
+   * @param value New value.
+   */
   public handleEmailChange(value: string): void {
     this._root.auth.setEmail(value)
   }
 
+  /**
+   * Name change handler.
+   *
+   * @param value New value.
+   */
   public handleNameChange(value: string): void {
     this._root.auth.setName(value)
   }
 
+  /**
+   * Form submit handler.
+   */
   public async handleFormSubmit(): Promise<void> {
     if (this.submitDisabled) {
       return
@@ -94,6 +115,7 @@ export class LoginPageController {
       this._root.navigate(ROUTES.POSTS.REDIRECT_PATH(1))
     } catch (e: unknown) {
       // TODO: Log something somewhere
+      // TODO: redirect/show toast/etc.
     }
   }
 }

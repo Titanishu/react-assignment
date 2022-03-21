@@ -1,3 +1,7 @@
+/**
+ * Base abstract storage class.
+ * Default implementation is localStorage.
+ */
 export abstract class BaseStorage {
   protected _prefix: string
 

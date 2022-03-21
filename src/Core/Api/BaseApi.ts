@@ -1,5 +1,8 @@
 import { BaseApiOptions } from './models'
 
+/**
+ * Abstract base API.
+ */
 export abstract class BaseApi {
   protected _baseURL: string
 
@@ -9,6 +12,9 @@ export abstract class BaseApi {
     this._baseURL = baseURL
   }
 
+  /**
+   * Request method.
+   */
   protected request<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
     const inputParams =
       typeof input === 'string'
@@ -32,6 +38,9 @@ export abstract class BaseApi {
       .catch((error: unknown) => this.handleError(error, inputParams, initParams))
   }
 
+  /**
+   * Request success handler.
+   */
   protected handleSuccess<T>(response: Response, _input: RequestInfo, _init?: RequestInit): Promise<T> {
     if (response.status >= 400) {
       throw response
@@ -39,6 +48,10 @@ export abstract class BaseApi {
 
     return response.json() as Promise<T>
   }
+
+  /**
+   * Request error handler.
+   */
   protected handleError(error: unknown, _input: RequestInfo, _init?: RequestInit): never {
     throw error
   }
