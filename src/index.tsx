@@ -5,12 +5,17 @@ import ReactDOM from 'react-dom'
 
 import { App } from './App'
 import { RootStoreProvider } from './Core/RootStore/RootStoreProvider'
+import { bootstrap } from './utils'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <RootStoreProvider>
-      <App />
-    </RootStoreProvider>
-  </React.StrictMode>,
-  document.getElementById('root'),
-)
+const root = document.getElementById('root')
+
+void bootstrap(root).then(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <RootStoreProvider>
+        <App />
+      </RootStoreProvider>
+    </React.StrictMode>,
+    root,
+  )
+})

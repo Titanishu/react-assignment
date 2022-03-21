@@ -8,11 +8,12 @@ interface Props {
   onChange: (value: string) => void
   disabled?: boolean
   title?: string
+  placeholder?: string
   className?: string
 }
 
 export const CommonInput: FC<Props> = (props) => {
-  const { value, onChange, title, disabled, className } = props
+  const { value, onChange, title, placeholder, disabled, className } = props
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +27,13 @@ export const CommonInput: FC<Props> = (props) => {
   return (
     <div className={classes}>
       <span className={s.CommonInput__Title}>{title}</span>
-      <input className={s.CommonInput__Input} disabled={disabled} value={value} onChange={handleChange} />
+      <input
+        className={s.CommonInput__Input}
+        placeholder={placeholder}
+        disabled={disabled}
+        value={value}
+        onChange={handleChange}
+      />
     </div>
   )
 }

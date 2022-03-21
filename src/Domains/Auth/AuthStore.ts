@@ -37,6 +37,17 @@ export class AuthStore {
   }
 
   /**
+   * Get token or throw an error.
+   */
+  public getToken(): string {
+    if (!this._authToken) {
+      throw new Error('No token')
+    }
+
+    return this._authToken
+  }
+
+  /**
    * Is user authenticated or not.
    */
   public get authenticated(): boolean {

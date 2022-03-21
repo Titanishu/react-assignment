@@ -4,9 +4,12 @@ import { NavigateFunction, NavigateOptions, To } from 'react-router-dom'
 import { AuthApi } from '../../Domains/Auth/Api/AuthApi'
 import { AuthStore } from '../../Domains/Auth/AuthStore'
 import { AuthStorage } from '../../Domains/Auth/Storage/AuthStorage'
+import { PostsApi } from '../../Domains/Posts/Api/PostsApi'
+import { PostsStore } from '../../Domains/Posts/PostsStore'
 
 export class RootStore {
   public readonly auth: AuthStore
+  public readonly posts: PostsStore
   // TODO: Should be a Store, but for simplicity this test task...
   private _navigate: NavigateFunction | null
 
@@ -14,6 +17,7 @@ export class RootStore {
 
   constructor() {
     this.auth = new AuthStore({ api: new AuthApi(), storage: new AuthStorage() })
+    this.posts = new PostsStore({ api: new PostsApi(), getToken: () => this.auth.getToken() })
     this._navigate = null
 
     this._loading = true

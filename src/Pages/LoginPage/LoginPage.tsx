@@ -12,9 +12,9 @@ export const LoginPage: FC = (_props) => {
 
   return (
     <LoginPageControllerContext.Provider value={controller}>
-      <div className={s.LoginPage}>
+      <main className={s.LoginPage}>
         <LoginForm />
-      </div>
+      </main>
     </LoginPageControllerContext.Provider>
   )
 }

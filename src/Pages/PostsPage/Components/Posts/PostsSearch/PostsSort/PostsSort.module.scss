@@ -1,0 +1,13 @@
+@import '../../../../../../Styles/mixins.scss';
+
+.PostsSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include flexbox-gap-x(10px);
+
+  .PostsSort__Button {
+    background-color: #999999;
+  }
+}

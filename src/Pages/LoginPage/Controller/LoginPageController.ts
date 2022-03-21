@@ -91,7 +91,7 @@ export class LoginPageController {
       this._root.auth.setName(name)
       this._root.auth.save()
 
-      this._root.navigate(ROUTES.POSTS.PATH)
+      this._root.navigate(ROUTES.POSTS.REDIRECT_PATH(1))
     } catch (e: unknown) {
       // TODO: Log something somewhere
     }

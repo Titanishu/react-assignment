@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react'
 import React, { FC, useEffect } from 'react'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 
@@ -8,7 +9,7 @@ import { useRootStore } from '../RootStore/RootStoreContext'
 import { ROUTES } from './consts'
 import { ProtectedRoute } from './ProtectedRoute'
 
-export const AppRouter: FC = (_props) => {
+const AppRouterComponent: FC = (_props) => {
   const root = useRootStore()
   const navigate = useNavigate()
 
@@ -20,7 +21,7 @@ export const AppRouter: FC = (_props) => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={ROUTES.LOGIN.PATH} replace />} />
+      <Route path={ROUTES.PATH} element={<Navigate to={ROUTES.LOGIN.PATH} replace />} />
       <Route
         path={ROUTES.LOGIN.PATH}
         element={
@@ -41,3 +42,5 @@ export const AppRouter: FC = (_props) => {
     </Routes>
   )
 }
+
+export const AppRouter = observer(AppRouterComponent)

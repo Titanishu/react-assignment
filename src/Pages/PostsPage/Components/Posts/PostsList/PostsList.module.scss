@@ -1,0 +1,13 @@
+@import '../../../../../Styles/mixins.scss';
+
+.PostsList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include flexbox-gap-y(20px);
+
+  margin-block-start: unset;
+  margin-block-end: unset;
+  padding-inline-start: unset;
+}

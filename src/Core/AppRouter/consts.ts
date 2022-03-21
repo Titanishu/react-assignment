@@ -4,9 +4,10 @@ export const ROUTES = {
     PATH: '/login',
   },
   POSTS: {
-    PATH: '/posts/*',
-    POST: {
-      PATH: (post: number) => `/posts/${post}`,
+    PATH: '/posts/:page',
+    REDIRECT_PATH: (page: number) => `/posts/${page}`,
+    QUERY_PARAMS: {
+      user_id: 'user_id',
     },
   },
 }

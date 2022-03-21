@@ -1,0 +1,29 @@
+.UsersListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  background-color: #aaaaaa;
+
+  list-style-type: none;
+
+  &.UsersListItem--Selected {
+    background-color: #333;
+  }
+
+  .UsersListItem__Name {
+    color: black;
+  }
+
+  .UsersListItem__Badge {
+    --size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--size);
+    height: var(--size);
+    background-color: #666;
+    border-radius: 50%;
+  }
+}
